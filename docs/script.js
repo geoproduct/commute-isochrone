@@ -20,6 +20,22 @@ function analyze() {
   }
   const time = document.getElementById('timeInput').value;
   const coords = marker.getLatLng();
-  console.log("🕒 입력 시간:", time, "분");
-  console.log("📍 위치:", coords.lat, coords.lng);
+
+  fetch("https://your-api-url/isochrone", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      lat: coords.lat,
+      lng: coords.lng,
+      minutes: parseInt(time)
+    })
+  })
+  .then(response => response.json())
+  .then(geojson => {
+    if (window.isochroneLayer) map.removeLayer(window.isochroneLayer);
+    window.isochroneLayer = L.geoJSON(geojson, {
+      style: { color: "blue", fillOpacity: 0.3 }
+    }).addTo(map);
+  });
 }
+
