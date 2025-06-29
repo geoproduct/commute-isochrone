@@ -21,7 +21,7 @@ function analyze() {
   const time = document.getElementById('timeInput').value;
   const coords = marker.getLatLng();
 
-  fetch("https://your-api-url/isochrone", {
+  fetch("https://commute-isochrone.onrender.com/isochrone", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
