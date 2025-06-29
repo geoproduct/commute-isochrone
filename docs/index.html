@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>통근 범위 시각화</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ integrity 제거 -->
+  <link 
+    rel="stylesheet" 
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      height: 90vh;
+      width: 100%;
+    }
+    #controls {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="controls">
+  <label for="timeInput">통근 시간 (분): </label>
+  <input type="number" id="timeInput" min="1" max="120" value="30" />
+  <button onclick="analyze()">분석하기</button>
+</div>
+
+<div id="map"></div>
+
+<!-- ✅ integrity 제거 -->
+<script 
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<!-- 사용자 스크립트 -->
+<script src="script.js"></script>
+
+</body>
+</html>
